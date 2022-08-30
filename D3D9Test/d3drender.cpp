@@ -38,12 +38,9 @@ void D3D9Render::Setup(HWND hWnd)
 	CUSTOMVERTEX* pVertices;
 	if (SUCCEEDED(pVertexBuffer->Lock(0, 0, (void**)&pVertices, 0)))
 	{
-		pVertices[0].position = D3DXVECTOR4(1200.0f, 300.0f, 1.0f, 1.0f);
-		pVertices[0].color = D3DCOLOR_XRGB(255, 0, 0);
-		pVertices[1].position = D3DXVECTOR4(1800.0f, 900.0f, 1.0f, 1.0f);
-		pVertices[1].color = D3DCOLOR_XRGB(0, 255, 0);
-		pVertices[2].position = D3DXVECTOR4(600.0f, 900.0f, 1.0f, 1.0f);
-		pVertices[2].color = D3DCOLOR_XRGB(0, 0, 255);
+		pVertices[0] = { D3DXVECTOR4(1200.0f, 300.0f, 1.0f, 1.0f), D3DCOLOR_XRGB(255, 0, 0) };
+		pVertices[1] = { D3DXVECTOR4(1800.0f, 900.0f, 1.0f, 1.0f), D3DCOLOR_XRGB(0, 255, 0) };
+		pVertices[2] = { D3DXVECTOR4(600.0f, 900.0f, 1.0f, 1.0f), D3DCOLOR_XRGB(0, 0, 255) };
 		pVertexBuffer->Unlock();
 	}
 
@@ -58,7 +55,7 @@ void D3D9Render::Draw()
 {
 	if (pD3D9DeviceEx/* && g_pVB*/)
 	{
-		pD3D9DeviceEx->Clear(0, 0, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 255), 1.0f, 0);
+		pD3D9DeviceEx->Clear(0, 0, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 32, 154), 1.0f, 0);
 
 		if (SUCCEEDED(pD3D9DeviceEx->BeginScene()))
 		{
